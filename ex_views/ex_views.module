@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * Implements hook_views_api().
+ * @return array the Views API version
+ */
+function exportables_views_views_api() {
+  // Define the version of the Views API to implement
+  return array('api' => '3.0');
+}
+
+/**
+ * Implements hook_views_default_views().
+ * @return array a list of views
+ */
+function exportables_views_views_default_views() {
+  // Get exported view files
+  $module_path = drupal_get_path('module', 'exportables_views');
+  $files = file_scan_directory($module_path . '/views', '/.inc/');
+
+  $views = array();
+
+  foreach ($files as $file_path => $file) {
+    require $file_path;
+
+    if (isset($view)) {
+      $views[$view->name] = $view;
+    }
+  }
+
+  return $views;
+}

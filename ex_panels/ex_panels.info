@@ -1,0 +1,7 @@
+name = Exportable Panels
+description = Module to store panel exports
+package = Exportable
+core = 7.x
+
+dependencies[] = panels
+dependencies[] = page_manager

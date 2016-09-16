@@ -1,0 +1,7 @@
+name = Exportable Rules
+description = Module to store rule exports
+package = Exportable
+core = 7.x
+
+dependencies[] = rules
+dependencies[] = rules_admin

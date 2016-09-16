@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * Implements hook_flag_default_flags().
+ */
+
+ function ex_flags_flag_default_flags() {
+
+   // File scan for .inc files
+   $flag_path = drupal_get_path('module', 'ex_flags') . '/flags';
+   $files = file_scan_directory($flag_path, '/\.inc/');
+
+   $flags = array();
+
+   foreach ($files as $file_path => $file) {
+     require $file_path;
+     if(isset($flags)) {
+       $files[$file->name] = $flags;
+     }
+   }
+
+   return $flags;
+ }

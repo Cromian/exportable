@@ -1,0 +1,51 @@
+<?php
+
+/**
+  * Implementation of hook_ctools_plugin_api().
+  */
+
+function ex_panels_ctools_plugin_api($module, $api) {
+  if ($module == 'page_manager' && $api == 'pages_default') {
+    return array('version' => 1);
+  }
+}
+
+/**
+ * Implements hook_default_page_manager_pages().
+ * @return array a list of pages
+ */
+function ex_panels_default_page_manager_pages() {
+  // Get exported  files
+  $module_path = drupal_get_path('module', 'ex_panels');
+  $files = file_scan_directory($module_path . '/pages', '/.inc/');
+
+  $pages = array();
+
+  foreach ($files as $file_path => $file) {
+    require $file_path;
+
+    if (isset($page)) {
+      $pages[$page->name] = $page;
+    }
+  }
+
+  return $pages;
+}
+
+function ex_panels_default_page_manager_handlers() {
+  // Get exported  files
+  $module_path = drupal_get_path('module', 'ex_panels');
+  $files = file_scan_directory($module_path . '/handlers', '/.inc/');
+
+  $handlers = array();
+
+  foreach ($files as $file_path => $file) {
+    require $file_path;
+
+    if (isset($handler)) {
+      $handlers[$handler->name] = $handler;
+    }
+  }
+
+  return $handlers;
+}

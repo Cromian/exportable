@@ -1,0 +1,4 @@
+name = Auto Export
+description = Allows for auto exporting of files into the approrate exporable directory.
+package = Exportable
+core = 7.x

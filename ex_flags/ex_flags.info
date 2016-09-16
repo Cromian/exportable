@@ -1,0 +1,6 @@
+name = Exportable Flags
+description =  Module to store flag exports
+package = Exportable
+core = 7.x
+
+dependencies[] = flag

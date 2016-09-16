@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * Implements hook_default_rules_configuration().
+ */
+function ex_rules_default_rules_configuration() {
+  $rules = array();
+
+  //File scan for .inc files of the rules
+  $rules_path = drupal_get_path('module', 'ex_rules') . '/rules';
+  $files = file_scan_directory($rules_path, '/\.inc/');
+
+  foreach ($files as $filepath => $file) {
+    require $filepath;
+    if (isset($rule)) {
+      $rules[$file->name] = rules_import($rule);
+    }
+  }
+
+  return $rules;
+}

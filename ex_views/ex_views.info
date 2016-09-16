@@ -1,0 +1,7 @@
+name = Exportable Views
+description = Module to store view exports
+package = Exportable
+core = 7.x
+
+dependencies[] = views
+dependencies[] = views_ui

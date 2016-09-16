@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * Initiate hook_form_alter().
+ */
+
+// DONE: Create swtich statement for form edit for each supported module
+//       export page to create an auto export button.
+
+// TODO: The auto export button should copy the exported code, and create
+//       a .inc file within each respective module using the machine name
+//       as the file name.
+
+// Reffrece: https://api.drupal.org/api/drupal/includes!file.inc/function/file_unmanaged_save_data/7.x
+
+// Function needs to be button intiates the file save data (unmnaged) into the file modules.
+
+ function ex_auto_form_alter(&$form, &$form_state, $form_id) {
+
+   dpm($form_id);
+
+   switch ($form_id)  {
+
+     // Panel Handler Export
+      case 'page_manager_handler_export':
+
+  	 		break;
+
+      // Panel Page Export
+      case 'page_manager_page_form_export':
+
+        break;
+
+      // Flag Export
+      case 'flag_export_form':
+
+        break;
+
+      // Views Export
+      case 'ctools_export_form':
+
+        break;
+
+      // Rules Export
+      case 'rules_ui_form_export_rules_config':
+
+        break;
+  	 }
+ }
